@@ -10,7 +10,7 @@ const Usuario = new Schema({
         type: String,
         required: true
     },
-    eAdmin: {
+    isAdmin: {
         type: Number,
         default: 0
     },
