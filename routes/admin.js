@@ -7,11 +7,9 @@ require("../models/Categoria");
 const Categoria = mongoose.model("categorias");
 require("../models/Posts");
 const Post = mongoose.model("posts");
-const {
-    isAdmin
-} = require("../helpers/isAdmin");
+const {isAdmin} = require("../helpers/isAdmin");
 
-router.get('/', (req, res) => {
+router.get('/', isAdmin, (req, res) => {
     res.redirect("/home");
 });
 
@@ -156,7 +154,7 @@ router.post("/posts/novo", isAdmin, (req, res) => {
             conteudo: req.body.conteudo,
             categoria: req.body.categoria,
             slug: req.body.slug
-        }
+        };
         new Post(novoPost).save().then(() => {
             req.flash("success_msg", "Post criado com sucesso!");
             res.redirect("/posts");

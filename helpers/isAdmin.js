@@ -3,7 +3,7 @@ module.exports = {
         if (req.isAuthenticated() && req.user.isAdmin == 1) {
             return next();
         }
-        req.flash("error_msg", "Para acede a esta área, precisa ser um administrador!");
+        req.flash("error_msg", "Para aceder a esta área, precisa ser um administrador!");
         res.redirect("/home");
     }
 };
